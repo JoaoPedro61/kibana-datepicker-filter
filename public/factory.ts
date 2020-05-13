@@ -1,8 +1,6 @@
-import { i18n } from '@kbn/i18n';
-
 import { ExpressionFunction, Render } from './imports';
 
-const name = 'datepicker';
+const name = 'kbn-datepicker';
 
 type Context = any;
 
@@ -14,7 +12,7 @@ type VisParams = Required<Arguments>;
 
 interface RenderValue {
   visData: Context;
-  visType: 'datepicker';
+  visType: 'kbn-datepicker';
   visConfig: VisParams;
   params: {
     listenOnChange: boolean;
@@ -25,9 +23,7 @@ type Return = Render<RenderValue>;
 
 export const factory = (): ExpressionFunction<typeof name, Context, Arguments, Return> => ({
   name,
-  help: i18n.translate('visTypeDatepicker.function.help', {
-    defaultMessage: 'Datepicker visualization',
-  }),
+  help: "Datepicker visualization",
   args: {
     visData: { },
     visConfig: {

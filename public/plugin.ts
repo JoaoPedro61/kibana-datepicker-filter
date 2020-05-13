@@ -13,6 +13,8 @@ interface DatepickerVisualizationDependencies {
 export interface DatepickerPluginSetupDependencies {
   expressions: ReturnType<ExpressionsPublicPlugin['setup']>;
   visualizations: VisualizationsSetup;
+  npSetup: any;
+  npStart: any;
 }
 
 export class DatepickerVisPlugin implements Plugin<Promise<void>, void> {

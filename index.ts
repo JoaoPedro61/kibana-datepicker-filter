@@ -7,14 +7,13 @@ import { LegacyPluginApi, LegacyPluginInitializer } from '../../src/legacy/types
 
 const datepickerVisPluginInitializer: LegacyPluginInitializer = ({ Plugin }: LegacyPluginApi) =>
   new Plugin({
-    id: 'datepicker',
+    id: 'kbn-datepicker',
     require: ['kibana', 'elasticsearch'],
     publicDir: resolve(__dirname, 'public'),
     uiExports: {
       visTypes: [
-        'plugins/datepicker/legacy'
+        'plugins/kbn-datepicker/legacy'
       ],
-      styleSheetPaths: resolve(__dirname, 'public/index.scss'),
       hacks: [
         resolve(__dirname, 'public/legacy')
       ],

@@ -24,8 +24,6 @@ import {
 
 export function Visualization(props, another) {
 
-  console.log(props);
-
 	const { visParams, vis, visData, config } = props;
   const { type } = vis;
 
@@ -55,8 +53,6 @@ export function Visualization(props, another) {
       didCancel = true;
     }
   }, [ visParams ]);
-
-  console.log(showUpdateButton);
 
   const [ isAutoRefreshOnly, setIsAutoRefreshOnly ] = useState(false);
 

@@ -1,9 +1,0 @@
-{
-  "paths": {
-    "datepicker": "./"
-  },
-  "translations": [
-    "translations/zh-CN.json"
-  ]
-}
-

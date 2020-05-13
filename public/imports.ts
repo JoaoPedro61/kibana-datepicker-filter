@@ -41,12 +41,3 @@ export {
 	changeTimeFilter,
 	extractTimeFilter
 } from './../../../src/plugins/data/public/query/timefilter';
-
-export {
-	UptimeRefreshContext,
-	UptimeSettingsContext
-} from './../../../x-pack/legacy/plugins/uptime/public/contexts';
-
-export {
-	useUrlParams
-} from './../../../x-pack/legacy/plugins/uptime/public/hooks';
