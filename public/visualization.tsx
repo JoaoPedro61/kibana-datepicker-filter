@@ -33,8 +33,6 @@ const commonsRanges = [
 
 export function Visualization(props, another) {
 
-  console.log(props);
-
 	const { visParams, vis, visData, config } = props;
   const { type } = vis;
 
@@ -170,27 +168,39 @@ export function Visualization(props, another) {
     }
   }, [ visParams ]);
 
+  const _superPicker = () => {
+    return (
+      <EuiSuperDatePicker
+        isLoading={isLoading}
+	      start={start}
+        end={end}
+        onTimeChange={onTimeChange}
+        onRefresh={onRefresh}
+        isPaused={isPaused}
+        refreshInterval={refreshInterval}
+        onRefreshChange={onRefreshChange}
+        recentlyUsedRanges={recentlyUsedRanges}
+        showUpdateButton={showUpdateButton}
+        isAutoRefreshOnly={isAutoRefreshOnly}
+        locale={locale}
+        commonlyUsedRanges={inherithCommonsRanges}
+      />
+    );
+  };
 
-	return (
-		<Fragment>
-			<div style={maxWidth ? {width: `${maxWidth}px`} : {} }>	
-	  		<EuiSuperDatePicker 
-	        isLoading={isLoading}
-	        start={start}
-	        end={end}
-	        onTimeChange={onTimeChange}
-	        onRefresh={onRefresh}
-	        isPaused={isPaused}
-	        refreshInterval={refreshInterval}
-	        onRefreshChange={onRefreshChange}
-	        recentlyUsedRanges={recentlyUsedRanges}
-	        showUpdateButton={showUpdateButton}
-          isAutoRefreshOnly={isAutoRefreshOnly}
-          locale={locale}
-          commonlyUsedRanges={inherithCommonsRanges}
-	  		/>
-			</div>
-  	</Fragment>
+  const _limitedWidth = () => {
+    return (
+      <div style={{...(maxWidth ? {width: `${maxWidth}px`} : { width: '100%' })}}>
+        {_superPicker()}  
+      </div>
+    );
+  };
+
+  if (maxWidth) {
+    return (_limitedWidth());
+  }
+  return (
+    _superPicker()
 	);
 
 }
