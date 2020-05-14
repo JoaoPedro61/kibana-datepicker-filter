@@ -5,18 +5,6 @@ import { NumberInputOption, SwitchOption, SelectOption, VisOptionsProps } from '
 
 import { DatePickerVisParams } from './types';
 
-
-const localesLangs = [
-  {
-    text: 'Portuguese',
-    value: 'pt-br'
-  },
-  {
-    text: 'English',
-    value: 'en-us'
-  }
-];
-
 const locales = [
   {
     text: 'Brazil',
@@ -97,15 +85,6 @@ function DatePickerOptions({
       </EuiPanel>
       <EuiSpacer size="s"/>
       <EuiPanel paddingSize="s">
-        <SelectOption
-          options={localesLangs}
-          label="Locale language"
-          paramName="language"
-          value={stateParams.language}
-          setValue={setValue}
-          data-test-subj="language"
-        />
-        <EuiSpacer size="s"/>
         <SelectOption
           options={locales}
           label="Locale"

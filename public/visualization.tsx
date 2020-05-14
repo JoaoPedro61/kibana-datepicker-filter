@@ -20,7 +20,16 @@ import {
   EuiSuperDatePicker
 } from '@elastic/eui';
 
-
+const commonsRanges = [
+  { start: 'now/d', end: 'now/d', label: 'Hoje' },
+  { start: 'now/w', end: 'now/w', label: 'Esta semana' },
+  { start: 'now/M', end: 'now/M', label: 'Este mês' },
+  { start: 'now/y', end: 'now/y', label: 'Este ano' },
+  { start: 'now-1d/d', end: 'now-1d/d', label: 'Ontem' },
+  { start: 'now/w', end: 'now', label: 'Esta semana à hoje' },
+  { start: 'now/M', end: 'now', label: 'Este mês à hoje' },
+  { start: 'now/y', end: 'now', label: 'Este ano à hoje' },
+];
 
 export function Visualization(props, another) {
 
@@ -32,6 +41,7 @@ export function Visualization(props, another) {
   let inherithTimeRange = visData.timeRange;
   let inherithRefresh = false;
   let inherithRefreshInterval = 0;
+  let inherithCommonsRanges = void 0;
 
   if (!visParams.useAGlobalContextAsADefaultValue) {
     inherithTimeRange = {
@@ -49,6 +59,16 @@ export function Visualization(props, another) {
     };
   }
 
+  if (visParams.locale) {
+    if (visParams.locale === 'pt-br') {
+      inherithCommonsRanges = commonsRanges;
+    } else {
+      inherithCommonsRanges = void 0;
+    }
+  } else {
+    inherithCommonsRanges = void 0;
+  }
+
 	const [ recentlyUsedRanges, setRecentlyUsedRanges ] = useState([]);
 
   const [ isLoading, setIsLoading ] = useState(false);
@@ -56,8 +76,6 @@ export function Visualization(props, another) {
   const [ maxWidth, setMaxWidth ] = useState(visParams.maxWidth);
 
   const [ locale, setLocale ] = useState(visParams.locale);
-
-  const [ language, setLanguage ] = useState(visParams.language);
 
   const [ showUpdateButton, setShowUpdateButton ] = useState(visParams.showUpdateButton);
 
@@ -130,12 +148,20 @@ export function Visualization(props, another) {
       setIsAutoRefreshOnly(visParams.isAutoRefreshOnly);
       setMaxWidth(visParams.maxWidth);
       setLocale(visParams.locale);
-      setLanguage(visParams.language);
       if (!visParams.useAGlobalContextAsADefaultValue) {
         setIsPaused(!visParams.defaultValuesRefresh);
         setStart(visParams.defaultValuesTimeFrom);
         setEnd(visParams.defaultValuesTimeTo);
         setRefreshInterval(visParams.defaultValuesRefreshInterval);
+      }
+      if (visParams.locale) {
+        if (visParams.locale === 'pt-br') {
+          inherithCommonsRanges = commonsRanges;
+        } else {
+          inherithCommonsRanges = void 0;
+        }
+      } else {
+        inherithCommonsRanges = void 0;
       }
     }
 
@@ -161,6 +187,7 @@ export function Visualization(props, another) {
 	        showUpdateButton={showUpdateButton}
           isAutoRefreshOnly={isAutoRefreshOnly}
           locale={locale}
+          commonlyUsedRanges={inherithCommonsRanges}
 	  		/>
 			</div>
   	</Fragment>
