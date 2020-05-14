@@ -18,7 +18,16 @@ export const definition = (dependencies) => {
     },
     visConfig: {
       defaults: {
-        showUpdateButton: true
+        showUpdateButton: true,
+        maxWidth: 0,
+        isAutoRefreshOnly: false,
+        useAGlobalContextAsADefaultValue: true,
+        defaultValuesTimeTo: 'now',
+        defaultValuesTimeFrom: 'now-15m',
+        defaultValuesRefresh: false,
+        defaultValuesRefreshInterval: 0,
+        locale: 'en-us',
+        language: 'en-us'
       },
       component: Visualization
     },

@@ -24,13 +24,26 @@ import {
 
 export function Visualization(props, another) {
 
+  console.log(props);
+
 	const { visParams, vis, visData, config } = props;
   const { type } = vis;
 
-  let initializeTimeRange = visData.timeRange;
+  let inherithTimeRange = visData.timeRange;
+  let inherithRefresh = false;
+  let inherithRefreshInterval = 0;
 
-  if (!initializeTimeRange) {
-    initializeTimeRange = {
+  if (!visParams.useAGlobalContextAsADefaultValue) {
+    inherithTimeRange = {
+      to: visParams.defaultValuesTimeTo,
+      from: visParams.defaultValuesTimeFrom,
+    };
+    inherithRefresh = visParams.defaultValuesRefresh;
+    inherithRefreshInterval = visParams.defaultValuesRefreshInterval;
+  }
+
+  if (!inherithTimeRange) {
+    inherithTimeRange = {
       from: 'now-30m',
       to: 'now'
     };
@@ -38,28 +51,25 @@ export function Visualization(props, another) {
 
 	const [ recentlyUsedRanges, setRecentlyUsedRanges ] = useState([]);
 
-  const [ isDisabled, setIsDisabled ] = useState(false);
-
   const [ isLoading, setIsLoading ] = useState(false);
+
+  const [ maxWidth, setMaxWidth ] = useState(visParams.maxWidth);
+
+  const [ locale, setLocale ] = useState(visParams.locale);
+
+  const [ language, setLanguage ] = useState(visParams.language);
 
   const [ showUpdateButton, setShowUpdateButton ] = useState(visParams.showUpdateButton);
 
-  useEffect(() => {
-    let didCancel = false;
+  const [ isAutoRefreshOnly, setIsAutoRefreshOnly ] = useState(visParams.isAutoRefreshOnly);
 
-    !didCancel && setShowUpdateButton(visParams.showUpdateButton)
+  const [ start, setStart ] = useState(inherithTimeRange.from);
 
-    return () => {
-      didCancel = true;
-    }
-  }, [ visParams ]);
+  const [ end, setEnd ] = useState(inherithTimeRange.to);
 
-  const [ isAutoRefreshOnly, setIsAutoRefreshOnly ] = useState(false);
+  const [ isPaused, setIsPaused ] = useState(!inherithRefresh);
 
-  const [ start, setStart ] = useState(initializeTimeRange.from);
-  const [ end, setEnd ] = useState(initializeTimeRange.to);
-  const [ isPaused, setIsPaused ] = useState(true);
-  const [ refreshInterval, setRefreshInterval ] = useState();
+  const [ refreshInterval, setRefreshInterval ] = useState(inherithRefreshInterval);
 
   const onTimeChange = ({ start, end }) => {
     const recentlyUsedRange = recentlyUsedRanges.filter(recentlyUsedRange => {
@@ -111,12 +121,34 @@ export function Visualization(props, another) {
       value: refreshInterval
     });
   };
+  
+  useEffect(() => {
+    let didCancel = false;
+
+    if (!didCancel) {
+      setShowUpdateButton(visParams.showUpdateButton)
+      setIsAutoRefreshOnly(visParams.isAutoRefreshOnly);
+      setMaxWidth(visParams.maxWidth);
+      setLocale(visParams.locale);
+      setLanguage(visParams.language);
+      if (!visParams.useAGlobalContextAsADefaultValue) {
+        setIsPaused(!visParams.defaultValuesRefresh);
+        setStart(visParams.defaultValuesTimeFrom);
+        setEnd(visParams.defaultValuesTimeTo);
+        setRefreshInterval(visParams.defaultValuesRefreshInterval);
+      }
+    }
+
+    return () => {
+      didCancel = true;
+    }
+  }, [ visParams ]);
+
 
 	return (
 		<Fragment>
-			<div style={{width: '500px'}}>	
+			<div style={maxWidth ? {width: `${maxWidth}px`} : {} }>	
 	  		<EuiSuperDatePicker 
-	  			isDisabled={isDisabled}
 	        isLoading={isLoading}
 	        start={start}
 	        end={end}
@@ -127,7 +159,8 @@ export function Visualization(props, another) {
 	        onRefreshChange={onRefreshChange}
 	        recentlyUsedRanges={recentlyUsedRanges}
 	        showUpdateButton={showUpdateButton}
-	        isAutoRefreshOnly={isAutoRefreshOnly}
+          isAutoRefreshOnly={isAutoRefreshOnly}
+          locale={locale}
 	  		/>
 			</div>
   	</Fragment>
