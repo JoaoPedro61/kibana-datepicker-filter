@@ -3,7 +3,7 @@ import { SchemaConfig } from './imports';
 
 
 export interface DatePickerVisParams {
-  type: 'kbn-datepicker';
+  type: 'kbn_datepicker';
   showUpdateButton: boolean;
   isAutoRefreshOnly: boolean;
   maxWidth: number;

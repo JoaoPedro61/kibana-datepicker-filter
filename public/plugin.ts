@@ -35,7 +35,7 @@ export class DatepickerVisPlugin implements Plugin<Promise<void>, void> {
     };
     const _def = definition(visualizationDependencies);
     expressions.registerFunction(factory);
-    (visualizations as any).types.createReactVisualization(_def);
+    (visualizations as any).createReactVisualization(_def);
   }
 
   public start(core: CoreStart) { }

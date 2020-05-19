@@ -1,24 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import {
-	EuiFlexGroup,
-	EuiFlexItem,
-	EuiFormControlLayoutDelimited,
-  EuiSpacer,
-  EuiFormLabel,
-  EuiFormControlLayout,
-  EuiButtonEmpty,
-  EuiPopover,
-  EuiIcon,
-  EuiText,
-  EuiIconTip,
-  EuiHorizontalRule,
-  EuiFieldNumber,
-  EuiButton,
-  EuiSelect,
-  EuiFlexGrid,
-  EuiButtonToggle,
-  EuiSuperDatePicker
-} from '@elastic/eui';
+import { EuiSuperDatePicker } from '@elastic/eui';
+
+
 
 const commonsRanges = [
   { start: 'now/d', end: 'now/d', label: 'Hoje' },
@@ -103,10 +86,7 @@ export function Visualization(props, another) {
     );
     visData.timeRange.from = start;
     visData.timeRange.to = end;
-    vis.filters.timeRange.from = start;
-    vis.filters.timeRange.to = end;
-    vis.aggs.setTimeRange(visData.timeRange);
-    type.visData.dependencies.npStart.plugins.data.query.timefilter.timefilter.setTime(vis.filters.timeRange);
+    type.visData.dependencies.npStart.plugins.data.query.timefilter.timefilter.setTime(visData.timeRange);
     vis.updateState();
     setIsLoading(true);
     startLoading();

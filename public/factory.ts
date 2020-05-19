@@ -1,6 +1,6 @@
 import { ExpressionFunction, Render } from './imports';
 
-const name = 'kbn-datepicker';
+const name = 'kbn_datepicker';
 
 type Context = any;
 
@@ -12,7 +12,7 @@ type VisParams = Required<Arguments>;
 
 interface RenderValue {
   visData: Context;
-  visType: 'kbn-datepicker';
+  visType: 'kbn_datepicker';
   visConfig: VisParams;
   params: {
     listenOnChange: boolean;

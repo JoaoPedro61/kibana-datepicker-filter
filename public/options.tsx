@@ -1,9 +1,18 @@
 import React, { useEffect, useMemo, Fragment } from 'react';
-import { EuiPanel, EuiSpacer, EuiSuperDatePicker } from '@elastic/eui';
-
-import { NumberInputOption, SwitchOption, SelectOption, VisOptionsProps } from './imports';
+import {
+  EuiPanel,
+  EuiSpacer,
+  EuiSuperDatePicker,
+  EuiFieldNumber,
+  EuiSwitch,
+  EuiSelect
+} from '@elastic/eui';
 
 import { DatePickerVisParams } from './types';
+
+
+
+
 
 const locales = [
   {
@@ -23,7 +32,7 @@ function DatePickerOptions({
   stateParams,
   setValidity,
   setValue,
-}: VisOptionsProps<DatePickerVisParams>) {
+}: any) {
 
   const onRefreshChange = ({ isPaused, refreshInterval }) => {
     setValue('defaultValuesRefresh', !isPaused);
@@ -61,46 +70,48 @@ function DatePickerOptions({
   return (
     <Fragment>
       <EuiPanel paddingSize="s">
-        <SwitchOption
+        <EuiSwitch
           label="Show update button"
-          paramName="showUpdateButton"
-          value={stateParams.showUpdateButton}
-          setValue={setValue}
+          name="showUpdateButton"
+          checked={stateParams.showUpdateButton}
+          onChange={e => setValue('showUpdateButton', e.target.checked)}
           data-test-subj="showUpdateButton"
         />
-        <SwitchOption
+        <EuiSpacer size="s"/>
+        <EuiSwitch
           label="Only refresh mode"
-          paramName="isAutoRefreshOnly"
-          value={stateParams.isAutoRefreshOnly}
-          setValue={setValue}
+          name="isAutoRefreshOnly"
+          checked={stateParams.isAutoRefreshOnly}
+          onChange={e => setValue('isAutoRefreshOnly', e.target.checked)}
           data-test-subj="isAutoRefreshOnly"
         />
-        <SwitchOption
+        <EuiSpacer size="s"/>
+        <EuiSwitch
           label="Use the global context as default value"
-          paramName="useAGlobalContextAsADefaultValue"
-          value={stateParams.useAGlobalContextAsADefaultValue}
-          setValue={setValue}
+          name="useAGlobalContextAsADefaultValue"
+          checked={stateParams.useAGlobalContextAsADefaultValue}
+          onChange={e => setValue('useAGlobalContextAsADefaultValue', e.target.checked)}
           data-test-subj="useAGlobalContextAsADefaultValue"
         />
       </EuiPanel>
       <EuiSpacer size="s"/>
       <EuiPanel paddingSize="s">
-        <SelectOption
+        <EuiSelect
           options={locales}
           label="Locale"
-          paramName="locale"
+          name="locale"
           value={stateParams.locale}
-          setValue={setValue}
+          onChange={e => setValue('locale', e.target.value)}
           data-test-subj="locale"
         />
       </EuiPanel>
       <EuiSpacer size="s"/>
       <EuiPanel paddingSize="s">
-        <NumberInputOption
+        <EuiFieldNumber
           label="Max Width(px)"
-          paramName="maxWidth"
+          name="maxWidth"
           value={stateParams.maxWidth}
-          setValue={setValue}
+          onChange={e => setValue('maxWidth', e.target.value)}
           min={0}
           max={1000}
           data-test-subj="maxWidth"
