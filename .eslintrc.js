@@ -4,7 +4,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       '@kbn/eslint-import-resolver-kibana': {
-        rootPackageName: 'kbn_datepicker',
+        rootPackageName: 'kbn-datepicker',
       },
     },
   },
@@ -15,7 +15,7 @@ module.exports = {
         'import/resolver': {
           '@kbn/eslint-import-resolver-kibana': {
             forceNode: false,
-            rootPackageName: 'kbn_datepicker',
+            rootPackageName: 'kbn-datepicker',
           },
         },
       },

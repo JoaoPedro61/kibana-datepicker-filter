@@ -1,5 +1,5 @@
 {
-  "name": "kbn_datepicker",
+  "name": "kbn-datepicker",
   "version": "0.0.0",
   "description": "Simple datepicker to Kibana verion 7.7",
   "main": "index.js",
