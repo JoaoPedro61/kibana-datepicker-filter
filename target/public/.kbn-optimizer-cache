@@ -1,0 +1,49 @@
+{
+  "optimizerCacheKey": {
+    "lastCommit": "767439e5a6f6e89360f4e003a7e93c86c3d06249",
+    "bootstrap": "# this is only human readable for debugging, please don't try to parse this\n@kbn/babel-preset:e9564af680775b1c24064396aed739dcffe30fe3\n@kbn/dev-utils:33e80960499ade6915a43c78721cfcae3a0cf8d5\n@kbn/expect:d8f5076701581dd9ba3805eb0f1f37adc576c179\n@kbn/i18n:4877d84a7b904c882b4a7ede29acb0919b5aa65b\n@kbn/optimizer:332b5b2b6d971a5a4beab5a072303939092cde10\n@kbn/ui-shared-deps:9634f3c3f07a68a1afd4ede5a0cd13f9c6d3dbae",
+    "deletedPaths": [],
+    "modifiedTimes": {},
+    "workerConfig": {
+      "dist": false,
+      "repoRoot": "/home/pedro/Projects/src/github.com/elastic/kibana",
+      "optimizerCacheKey": "♻",
+      "browserslistEnv": "dev"
+    }
+  },
+  "cacheKey": {
+    "spec": {
+      "type": "plugin",
+      "id": "kbn-datepicker",
+      "entry": "./public/index",
+      "contextDir": "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker",
+      "sourceRoot": "/home/pedro/Projects/src/github.com/elastic/kibana",
+      "outputDir": "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/target/public"
+    },
+    "mtimes": {
+      "/home/pedro/Projects/src/github.com/elastic/kibana/packages/kbn-ui-shared-deps/public_path_module_creator.js": 1593611048506.797,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/common/index.ts": 1593695518366.2173,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/options/component.tsx": 1593635127880.478,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/options/index.ts": 1593624255918.124,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/visualization/component.tsx": 1593699646031.579,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/visualization/index.ts": 1593624306390.502,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/index.ts": 1593699709438.9053,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/index.ts": 1593697764444.0605,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/plugin.ts": 1593701487753.165,
+      "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/types.ts": 1593697138356.9907
+    }
+  },
+  "moduleCount": 10,
+  "files": [
+    "/home/pedro/Projects/src/github.com/elastic/kibana/packages/kbn-ui-shared-deps/public_path_module_creator.js",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/common/index.ts",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/options/component.tsx",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/options/index.ts",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/visualization/component.tsx",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/components/visualization/index.ts",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/application/index.ts",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/index.ts",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/plugin.ts",
+    "/home/pedro/Projects/src/github.com/elastic/kibana/plugins/kbn-datepicker/public/types.ts"
+  ]
+}
